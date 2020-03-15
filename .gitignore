@@ -1,3 +1,5 @@
+dmenu
+stest
 *.o
 .clangd/
 compile_commands.json

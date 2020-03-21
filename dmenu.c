@@ -711,9 +711,9 @@ read_Xresources(void) {
 			colors[SchemeNorm][ColBg] = strdup(xval.addr);
 		if (XrmGetResource(xdb, "dmenu.foreground", "*", &type, &xval) == True)  /* normal foreground color */
 			colors[SchemeNorm][ColFg] = strdup(xval.addr);
-		if (XrmGetResource(xdb, "dmenu.background", "*", &type, &xval) == True)  /* selected background color */
+		if (XrmGetResource(xdb, "dmenu.sel_bg", "*", &type, &xval) == True)  /* selected background color */
 			colors[SchemeSel][ColBg] = strdup(xval.addr);
-		if (XrmGetResource(xdb, "dmenu.pri_accent", "*", &type, &xval) == True)  /* selected foreground color */
+		if (XrmGetResource(xdb, "dmenu.foreground", "*", &type, &xval) == True)  /* selected foreground color */
 			colors[SchemeSel][ColFg] = strdup(xval.addr);
 
 		XrmDestroyDatabase(xdb);

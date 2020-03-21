@@ -5,7 +5,7 @@ cache="$cachedir/dmenu_run"
 
 [ ! -e "$cachedir" ] && mkdir -p "$cachedir"
 
-function ayy() {
+function dmenu_path() {
   IFS=:
   if stest -dqr -n "$cache" $PATH; then
           stest -flx $PATH | sort -u | tee "$cache"
@@ -14,4 +14,8 @@ function ayy() {
   fi
 }
 
-ayy | dmenu "$@" | ${SHELL:-"/bin/sh"} &
+cmd=$(dmenu_path | dmenu)
+if ! test -z $cmd; then
+  sed -i "/^$cmd$/d; 1s/^/$cmd\n/" $cache
+  ${SHELL:-"/bin/sh"} -c $cmd &
+fi
